@@ -158,22 +158,22 @@ Apply the same method for the previous question. When the first key is the same,
 
 ```javascript
 function rankingSorter(firstKey, secondKey) {
-    return function(a, b) {  
-        if (a[firstKey] > b[firstKey]) {  
-            return -1;  
-        } else if (a[firstKey] < b[firstKey]) {  
-            return 1;  
-        }  
-        else {
-            if (a[secondKey] > b[secondKey]) {  
-                return 1;  
-            } else if (a[secondKey] < b[secondKey]) {  
-                return -1;  
-            } else {
-                return 0;
-            }
-        } 
+  return function(a, b) {  
+    if (a[firstKey] > b[firstKey]) {  
+      return -1;  
+    } else if (a[firstKey] < b[firstKey]) {  
+      return 1;  
     }  
+    else {
+      if (a[secondKey] > b[secondKey]) {  
+        return 1;  
+      } else if (a[secondKey] < b[secondKey]) {  
+        return -1;  
+      } else {
+        return 0;
+      }
+    } 
+  }  
 }
 
 input.sort(rankingSorter('score', 'name'));
@@ -257,10 +257,88 @@ const formatAmount = (amount) => {
 ```
 </details>
 
+<b>2. Datetime formatting</b>
+
+Formatting the datetime string below into a local time.
+
+input
+
+``` javascript
+'2020-06-28T23:59:01Z'
+```
+
+output - this is the local time (AEST for me)
+
+``` javascript
+'29/06/2020 09:59:01 AM'
+```
+
+<details><summary><b>Answer</b></summary>
+
+Let's give it a go by using <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat">Intl.DateTimeFormat.</a> This will give you '29/06/2020'.
+
+``` javascript
+new Intl.DateTimeFormat('en-AU').format(new Date('2020-06-28T23:59:01Z'));
+```
+
+Now, Intl.DateTimeFormat has options. Let's pass the options.
+
+```javascript
+const options = {
+  year: 'numeric', month: 'numeric', day: 'numeric',
+  hour: 'numeric', minute: 'numeric', second: 'numeric',
+  hour12: true,
+  timeZone: 'Australia/Sydney' 
+};
+
+const formatted = new Intl.DateTimeFormat('en-AU', options).format(new Date('2020-06-28T23:59:01Z'));
+```
+
+The above will give us the output of '29/06/2020, 9:59:01 am'. We need to format this.
+
+```javascript
+formatted.toUpperCase().split(', ').join(' ');
+```
+
+That's it🤙
+
+If you want to do this without native API, it gets long🐢
+
+``` typescript
+formatUtcToLocal(timestamp: string): string {
+  const localTime = new Date(timestamp)
+  const year = localTime.getFullYear()
+  const month = this.formatSingleDigit(localTime.getMonth() + 1)
+  const day = this.formatSingleDigit(localTime.getDate())
+  const hour = this.formatSingleDigit(this.convertHour(localTime.getHours()))
+  const minutes = this.formatSingleDigit(localTime.getMinutes())
+  const seconds = this.formatSingleDigit(localTime.getSeconds())
+  const amOrPm = localTime.getHours() > 12 ? 'PM' : 'AM'
+
+  return `${day}/${month}/${year} ${hour}:${minutes}:${seconds} ${amOrPm}`
+}
+
+formatSingleDigit(value: number): string {
+  const formattedMonth = `0${value}`
+  return formattedMonth.substring(formattedMonth.length - 2, formattedMonth.length)
+}
+
+convertHour(hour: number): number {
+  if (hour > 12) {
+      return hour - 12
+  }
+  return hour
+}
+```
+
 <br />
+
 ---
+
 ### REFERNCES
+
 ---
+
 There is a greate JavaScript questions to get to know the language better. Your JavaScript knowledge will skyrocket🚀 Check out <a target="_blank" href="https://github.com/lydiahallie/javascript-questions">javascript-questions</a>
 
 I subscribe to <a target="_blank" href="https://javascriptweekly.com/">JavaScript Weekly.</a> It's a weekly email informing you on what is happening on JS landscape as well as useful JS tips! Highly recommended.
