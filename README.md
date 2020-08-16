@@ -330,13 +330,13 @@ convertHour(hour: number): number {
   return hour
 }
 ```
+</details>
 
 <br />
 
 ---
 
 ### REFERNCES
-
 ---
 
 There is a greate JavaScript questions to get to know the language better. Your JavaScript knowledge will skyrocket🚀 Check out <a target="_blank" href="https://github.com/lydiahallie/javascript-questions">javascript-questions</a>
