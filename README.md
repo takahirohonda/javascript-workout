@@ -343,4 +343,6 @@ There is a greate JavaScript questions to get to know the language better. Your 
 
 I subscribe to <a target="_blank" href="https://javascriptweekly.com/">JavaScript Weekly.</a> It's a weekly email informing you on what is happening on JS landscape as well as useful JS tips! Highly recommended.
 
+There are many code challenges websites. My recommendation is <a target="_blank" href="https://edabit.com/challenges">edatbit.com</a>. If you are comforatble with JavaScript, go to the expert level. These intereting bite-size challenges will be a holiday for your mind🌴
+
 I am copy and pasting emoji from <a target="_blank" href="https://unicode.org/emoji/charts/full-emoji-list.html">this website</a>🥰
