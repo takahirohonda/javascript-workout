@@ -89,7 +89,31 @@ new Date(Math.max.apply(null, input.map(x => new Date(x.datetime))));
 ```
 </details>
 
-<b>3. Sorting object array by a key</b>
+<b>3. Adding new key-value pair in all the objects in an array</b>
+
+You have an array of an object with name. Can you add an unique id to all the objects?
+
+input
+```javascript
+const input = [{name: 'John'}, {name: 'Tyson'}, {name: 'Joan'}]
+```
+
+output
+```javascript
+[{name: 'John', id: 1}, {name: 'Tyson', id: 2}, {name: 'Joan', id: 3}]
+```
+
+<details><summary><b>Answer</b></summary>
+
+We can use the map and use the index to add an unique id that increments.
+
+```javascript
+input.map((data, index) => ({name: data.name, id: index + 1}));
+```
+
+</details>
+
+<b>4. Sorting object array by a key</b>
 
 input
 ```javascript
@@ -133,7 +157,7 @@ input.sort(sorter('score'));
 
 </details>
 
-<b>4. Sorting object array by multipe keys</b>
+<b>5. Sorting object array by multipe keys</b>
 
 We sorted an object array by a key in the previous question. What if the score is tie and want to sort it by the second key, name.
 
