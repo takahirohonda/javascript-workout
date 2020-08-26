@@ -19,10 +19,10 @@ If you want to make a suggestion or contribute to this, feel free to pull the re
 <br />
 <h1>Topics</h1>
 <p><b><a href="#1">(1) Array of objects</a></b></P>
-<p><b><a href="#1">(2) Array</a></b></P>
-<p><b><a href="#1">(3) String format</a></b></P>
-<p><b><a href="#1">(4) Spread Syntax</a></b></P>
-<p><b><a href="#1">(5) Rest Parameter Syntax</a></b></P>
+<p><b><a href="#2">(2) Array</a></b></P>
+<p><b><a href="#3">(3) String format</a></b></P>
+<p><b><a href="#4">(4) Spread Syntax</a></b></P>
+<p><b><a href="#5">(5) Rest Parameter Syntax</a></b></P>
 </div>
 <br />
 
