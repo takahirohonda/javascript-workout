@@ -592,7 +592,57 @@ const newFruit = { ...fruit, item: { ...fruit.item, price: 1.0 } }
 
 </details>
 
-<b>9. Spread function call</b>
+<b>9. More spread with nested objects</b>
+
+Use spread to update item.price.amount to 2.0.
+
+input
+```javascript
+const fruit = { 
+  id: 1, 
+  item: {
+    name: 'apple',
+    sweet: true,
+    price: {
+      currency: 'US',
+      amount: 1.0
+    }
+  }
+}
+```
+
+output - add an price property to item
+```javascript
+{ 
+  id: 1, 
+  item: {
+    name: 'apple',
+    sweet: true,
+    price: {
+      currency: 'US',
+      amount: 2.0
+    }
+  }
+}
+```
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+const updated = { 
+  ...fruit, 
+  item: { 
+    ...fruit.item, 
+    price: { 
+      ...fruit.item.price, 
+      amount: 2.0 
+    }
+  }
+}
+```
+</details>
+
+<b>10. Spread function call</b>
 
 Spread can be used in a function call. We have a function called addAll. This will take 3 parameters. If we have an array of 3 numbers, how can we use the function?
 
@@ -600,7 +650,7 @@ Spread can be used in a function call. We have a function called addAll. This wi
 const addAll = (a, b, c) => a + b + c;
 
 // use addAll function on the array below
-const input = [1, 2, 3]
+const input = [1, 2, 3];
 ```
 
 <details><summary><b>Answer</b></summary>
