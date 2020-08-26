@@ -22,6 +22,7 @@ If you want to make a suggestion or contribute to this, feel free to pull the re
 <p><b>(2) Array</b></P>
 <p><b>(3) String format</b></P>
 <p><b>(4) Spread Syntax</b></P>
+<p><b>(5) Rest Parameter Syntax</b></P>
 </div>
 <br />
 
@@ -374,7 +375,7 @@ convertHour(hour: number): number {
 ### (4) SPREAD SYNTAX
 ---
 
-Spread syntax is cool. Use spread syntax for all the questions. Let's build spread syntax muscle memory!
+Spread syntax is cool🥳 Use spread syntax for all the questions. Let's build spread syntax muscle memory! 🐣🐣🐣
 
 <b>1. Spread with arrays</b>
 
@@ -613,6 +614,105 @@ This is the same as using apply(). But, spread makes it shorter.
 addAll.apply(null, input)
 ```
 </details>
+
+---
+
+### (5) REST PARAMETER SYNTAX
+---
+
+In JavaScript, three dot syntax is interesting. It can be either spread or rest parameter syntax and they do exactly the opposite🤯 Let's test your knowledge on rest parameter syntax🚀	
+
+<b>1. ...args</b>
+
+What is the output of below?
+
+```javascript
+function check(...args) {
+  console.log(args);
+}
+
+check(1, 2, 3, 4)
+```
+
+<details><summary><b>Answer</b></summary>
+
+Rest parameter syntax will create an array instead of unpacking an array of object into individual values as in spread syntax.
+
+The output will become an array of numbers🤯
+
+```javascript
+[1, 2, 3, 4]
+```
+</details>
+
+<b>2. ...args with other argments</b>
+
+What is the output of below?
+
+```javascript
+function check(firstNum, secondNum, ...args) {
+  console.log(firstNum);
+  console.log(secondNum);
+  console.log(args);
+}
+
+check(1, 2, 3, 4, 5)
+```
+
+<details><summary><b>Answer</b></summary>
+
+Rest parameter syntax will create an array instead of unpacking an array of object into individual values as in spread syntax.
+
+The output will become an array of numbers🤯
+
+```javascript
+1
+2
+[3, 4, 5]
+```
+</details>
+
+<b>3. Destructing an array</b>
+
+What is the output of below code?
+
+```javascript
+const [ first, ...rest ] = ['apple', 'banana', 'grape' ];
+
+console.log(first);
+console.log(rest)
+```
+
+<details><summary><b>Answer</b></summary>
+
+Rest parameter can be used when destructing arrays. ...rest will creates the shorter array.
+
+```javascript
+apple
+['banana', 'grape']
+```
+</details>
+
+<b>4. Destructing an object</b>
+What is the output of below code?
+
+```javascript
+const { id, ...rest } = {id: 1, name: 'apple', price: 1.0 };
+
+console.log(id);
+console.log(rest)
+```
+
+<details><summary><b>Answer</b></summary>
+
+Rest parameter can be used when destructing objects.
+
+```javascript
+1
+{ name: 'apple', price: 1.0 }
+```
+</details>
+
 <br />
 
 ---
