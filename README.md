@@ -16,11 +16,18 @@ Feel free to reach out to me🤙 <br />
 If you want to make a suggestion or contribute to this, feel free to pull the repo and make a pull request!
 
 </span>
+<br />
+<h1>Topics</h1>
+<p><b>(1) Array of objects</b></P>
+<p><b>(2) Array</b></P>
+<p><b>(3) String format</b></P>
+<p><b>(4) Spread Syntax</b></P>
 </div>
+<br />
 
 ---
 
-### (1) ARRAY OBJECTS
+### (1) ARRAY OF OBJECTS
 ---
 
 <b>1. Create an array of number from an array of an object and do calulation</b>
@@ -239,7 +246,7 @@ Array.from(new Set([0, 1, 2, 3, 4]))
 </details>
 
 ---
-### (3) FORMATTING
+### (3) STRING FORMAT
 ---
 
 <b>1. Currency Format</b>
@@ -363,6 +370,249 @@ convertHour(hour: number): number {
 ```
 </details>
 
+---
+### (4) SPREAD SYNTAX
+---
+
+Spread syntax is cool. Use spread syntax for all the questions. Let's build spread syntax muscle memory!
+
+<b>1. Spread with arrays</b>
+
+input
+```javascript
+const fruits = ['apple', 'banana', 'blueberry'];
+const vegs = ['lettus', 'tomato']
+```
+
+Without spread, we would use concat to combine two arrays. Use spread syntax to concat two arrays.
+
+output
+```javascript
+['apple', 'banana', 'blueberry', 'lettus', 'tomato']
+```
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+const combined = [ ...fruits, ...vegs ];
+
+// it is the same as
+const combined = fruits.concat(vegs);
+```
+</details>
+
+<b>2. Add object to an array</b>
+
+Create a new object with a new fruit added and preserve original fruits array the same.
+
+input
+```javascript
+const fruits = [{ id: 1, item: 'apple' }, { id: 2, item: 'orange' }];
+const newFruit = { id: 3, item: 'banana' };
+```
+
+output
+```javascript
+// Create a new object called newFruits
+[{ id: 1, item: 'apple' }, { id: 2, item: 'orange' }, { id: 3, item: 'banana' }]
+```
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+const newFruits = [ ...fruits, newFruit];
+```
+
+If you use Array.push() as below, it will modify the original array fruits. With spreading, we can preserve the original array.
+
+```javascript
+fruits.push(newFruit);
+```
+</details>
+
+<b>3. Create an array from a set</b>
+
+We can use spread syntax to create an iterable array from a set.
+
+input
+```javascript
+const fruitSet = new Set();
+set.add('apple');
+set.add('orange');
+set.add('banana');
+```
+
+output - create a new array called fruitArray
+```javascript
+['apple', 'orange', 'banana']
+```
+
+<b>4. Create an array from a string</b>
+
+We can also use spread to create an array from a string.
+
+input
+```javascript
+const str = 'spread';
+```
+
+output
+```javascript
+['s', 'p', 'e', 'a', 'd']
+```
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+const strArray = [ ...str ];
+```
+</details>
+
+<b>5. Copying an object</b>
+
+We can spread an object to copy and update. It is the equivalent of Object.assign().
+
+input
+```javascript
+const original = { id: 1, fruit: 'apple' }
+```
+
+output - create an copy of the original, copied.
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+const copied = { ...original };
+```
+
+This is the equivalent of
+```javascript
+const copied = Object.assign({}, original);
+```
+</details>
+
+<b>6. Adding a new property on an exisitng object</b>
+
+Add a new property to an exisitng object in an immutable fashion.
+
+input
+```javascript
+const fruit = { id: 1, name: 'apple' }
+```
+
+output
+```javascript
+{ id: 1, name: 'apple', sweet: true }
+```
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+const updatedFruit = { ...fruit, sweet: true }
+```
+
+We can do the spread if the added proerty is an object as below.
+
+```javascript
+const add = { sweet: true }
+const updatedFruit = { ...fruit, ...add }
+// Then this will create the object with a new property
+{ id: 1, name: 'apple', sweet: true }
+```
+</details>
+
+<b>7. Updating a property on an exisitng object</b>
+
+Update an existing property to create a new object in an immutable fashion.
+
+input
+```javascript
+const fruit = { id: 1, name: 'apple' }
+```
+
+output
+```javascript
+{ id: 1, name: 'banana' }
+```
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+const updatedFruit = { ...fruit, name: 'banana' }
+```
+
+We can update the property of the object from an object with spread, too!
+
+```javascript
+const update = { name: 'banana' }
+const updatedFruit = { ...fruit, ...update }
+// this will update the property
+{ id: 1, name: 'banana' }
+```
+</details>
+
+<b>8. Spread with nested object</b>
+
+Spread with nested object gets hairy. See if you can add a new property to the nested object as below.
+
+input
+```javascript
+const fruit = { 
+  id: 1, 
+  item: {
+    name: 'apple',
+    sweet: true 
+  }
+}
+```
+
+output - add an price property to item
+```javascript
+{ 
+  id: 1, 
+  item: {
+    name: 'apple',
+    sweet: true,
+    price: 1.0
+  }
+}
+```
+
+<details><summary><b>Answer</b></summary>
+
+Nested objects need to be spread. In another word, we can spread the inner object, item, to retain the existing property.
+
+```javascript
+const newFruit = { ...fruit, item: { ...fruit.item, price: 1.0 } }
+```
+
+</details>
+
+<b>9. Spread function call</b>
+
+Spread can be used in a function call. We have a function called addAll. This will take 3 parameters. If we have an array of 3 numbers, how can we use the function?
+
+```javascript
+const addAll = (a, b, c) => a + b + c;
+
+// use addAll function on the array below
+const input = [1, 2, 3]
+```
+
+<details><summary><b>Answer</b></summary>
+
+This is a cool use case. We can in fact pass the spread input.
+
+```javascript
+addAll(...input);
+```
+
+This is the same as using apply(). But, spread makes it shorter.
+
+```javascript
+addAll.apply(null, input)
+```
+</details>
 <br />
 
 ---
