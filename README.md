@@ -19,10 +19,10 @@ If you want to make a suggestion or contribute to this, feel free to pull the re
 <br />
 <h1>Topics</h1>
 <p><b><a href="#1">(1) Array of objects</a></b></P>
-<p><b>(2) Array</b></P>
-<p><b>(3) String format</b></P>
-<p><b>(4) Spread Syntax</b></P>
-<p><b>(5) Rest Parameter Syntax</b></P>
+<p><b><a href="#1">(2) Array</a></b></P>
+<p><b><a href="#1">(3) String format</a></b></P>
+<p><b><a href="#1">(4) Spread Syntax</a></b></P>
+<p><b><a href="#1">(5) Rest Parameter Syntax</a></b></P>
 </div>
 <br />
 
@@ -220,6 +220,7 @@ input.sort(rankingSorter('score', 'name'));
 </details>
 
 ---
+<span id="2"></span>
 ### (2) ARRAY
 ---
 
@@ -247,6 +248,7 @@ Array.from(new Set([0, 1, 2, 3, 4]))
 </details>
 
 ---
+<span id="3"></span>
 ### (3) STRING FORMAT
 ---
 
@@ -372,6 +374,7 @@ convertHour(hour: number): number {
 </details>
 
 ---
+<span id="4"></span>
 ### (4) SPREAD SYNTAX
 ---
 
@@ -616,7 +619,7 @@ addAll.apply(null, input)
 </details>
 
 ---
-
+<span id="5"></span>
 ### (5) REST PARAMETER SYNTAX
 ---
 
