@@ -347,6 +347,83 @@ arr.length = 0;
 ```
 </details>
 
+<b>6. Fill an empty array</b>
+
+Create an array of 10 1s as below.
+
+output
+```javascript
+[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+```
+
+<details><summary><b>Answer</b></summary>
+
+We can use fill() to fill an empty array with the value.
+
+```javascript
+new Array(10).fill(1);
+```
+
+</details>
+
+<b>7. Find common value from two arrays</b>
+
+Find the common value from two arrays.
+
+input
+```javascript
+const numOne = [0, 2, 4, 6, 8, 8];
+const numTwo = [1, 2, 3, 4, 5, 6];
+```
+
+output
+```javascript
+[2, 4, 6]
+```
+
+<details><summary><b>Answer</b></summary>
+
+First, we need de-duplicate the first array and use filter to find the common value.
+
+```javascript
+[ ...new Set(numOne)].filter(x => numTwo.includes(x));
+```
+</details>
+
+<b>8. Get random value from an array</b>
+
+Return random value from the color array below
+
+```javascript
+const colors = ['blue', 'white', 'green', 'navy', 'pink', 'black', 'brown'];
+```
+
+<details><summary><b>Answer</b></summary>
+
+Math.ramdom() yeilds a random number between 0 and one. Then, we multiply with length of the array and take the floor to generate random index.
+
+```javascript
+colors[Math.floor(Math.random() * colors.length)];
+```
+</details>
+
+<b>9. Get the last index of the value that occurs</b>
+
+Get the last index of 5 occurs in the array below. You need to return 9.
+
+```javascript
+const nums = [1, 5, 2, 6, 3, 5, 2, 3, 6, 5, 2, 7];
+```
+
+<details><summary><b>Answer</b></summary>
+
+Here is the interesting method that javascript has. lastIndexOf().
+
+```javascript
+nums.lastIndexOf(5);
+```
+</details>
+
 ---
 <span id="3"></span>
 ### (3) STRING FORMAT
@@ -765,6 +842,29 @@ This is the same as using apply(). But, spread makes it shorter.
 
 ```javascript
 addAll.apply(null, input)
+```
+</details>
+
+<b>11. Convert array to an object</b>
+
+Another interesting use case for spread. Convert the array to an object as below.
+
+input
+```javascript
+const arr = [ '1', '2', '3']
+```
+
+output
+```javascript
+{ 0: '1', 1: '2', 2: '3' }
+```
+
+<details><summary><b>Answer</b></summary>
+
+It's the quick and dirty way to convert an array to an object with spread✌
+
+```javascript
+{ ...arr }
 ```
 </details>
 
