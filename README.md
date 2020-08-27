@@ -70,6 +70,8 @@ imput.map(x => x.score).reduce((a, b) => a + b, 0)
 
 # (3) 
 Math.max.apply(null, input.map(x => x.score))
+// or use spread operator
+Math.max(...input.map(x => x.score))
 ```
 </details>
 
@@ -94,6 +96,9 @@ We can convert the string into a local time with new Date(). Then use the techni
 
 ```javascript
 new Date(Math.max.apply(null, input.map(x => new Date(x.datetime))));
+
+// or use spread
+new Date(Math.max(...input.map(x => new Date(x.datetime))));
 ```
 </details>
 
