@@ -252,6 +252,27 @@ Array.from(new Set([0, 1, 2, 3, 4]))
 
 </details>
 
+<b>2. Removing duplicates from an array</b>
+
+Remove duplicate value from an array.
+
+```javascript
+const arr = ['apple', 'orange', 'banana', 'orange', 'apple' ];
+```
+
+<details><summary><b>Answer</b></summary>
+
+We can use Set() and either Array.from or spread
+
+```javascript
+Array.from(new Set(arr));
+
+// or
+[ ...new Set(arr) ]
+```
+</details>
+
+
 ---
 <span id="3"></span>
 ### (3) STRING FORMAT
