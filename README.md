@@ -63,15 +63,18 @@ output
 
 ```javascript
 # (1)
-input.map(x => x.score)
+input.map(x => x.score);
+// alternatively we can map array without .map()
+// Array.from takes mapFunction as a second argument, which will be called on every element of an array.
+Array.from(input, ({score}) => score);
 
 # (2)
-imput.map(x => x.score).reduce((a, b) => a + b, 0)
+imput.map(x => x.score).reduce((a, b) => a + b, 0);
 
 # (3) 
-Math.max.apply(null, input.map(x => x.score))
+Math.max.apply(null, input.map(x => x.score));
 // or use spread operator
-Math.max(...input.map(x => x.score))
+Math.max(...input.map(x => x.score));
 ```
 </details>
 
@@ -272,6 +275,77 @@ Array.from(new Set(arr));
 ```
 </details>
 
+<b>3. Replace the specific value</b>
+
+Replace watermelon with blueberry in the array below.
+
+input
+```javascript
+const fruits = [ 'apple', 'banana', 'watermelon', 'melon' ];
+```
+
+output
+```javascript
+[ 'apple', 'banana', 'blueberry', 'melon' ]
+```
+
+<details><summary><b>Answer</b></summary>
+
+Use map with if condition✌
+
+```javascript
+const newFruits = fruits.map(x => {
+  if (x === 'watermelon') return 'blueberry';
+  return x;
+});
+```
+</details>
+
+<b>4. modulo operation</b>
+
+Create an array of the reminder after dividing each by 3. Let's try map the value without using map(). What can you do?
+
+input
+```javascript
+const input = [ 3, 4, 5, 6, 7 ];
+```
+
+output
+```javascript
+[ 0, 1, 2, 0, 1]
+```
+
+<details><summary><b>Answer</b></summary>
+
+We can map array without using .map(). Array.from takes arrayLike object as an first argument and map function applied to every element of the array as a second argument. Third argument is the value to use as this when executing map function. Second and thrid arguments are optional.
+
+```javascript
+Array.from(input, x => x % 3);
+```
+
+</details>
+
+<b>5. Empty an array</b>
+
+Empty the array below:
+
+input
+```javascript
+const arr = [1, 2, 3, 4];
+```
+
+output
+```javascript
+[]
+```
+<details><summary><b>Answer</b></summary>
+
+We can just set the array length to 0. That's it🤯
+
+```javascript
+arr.length = 0;
+```
+</details>
 
 ---
 <span id="3"></span>
