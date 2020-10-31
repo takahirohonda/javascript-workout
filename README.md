@@ -424,6 +424,32 @@ nums.lastIndexOf(5);
 ```
 </details>
 
+
+<b>9. Get the last element of an array</b>
+
+Get the last element of the array
+
+```javascript
+const array = [1, 2, 3, 4]
+```
+
+output
+
+```bash
+4
+```
+
+<details><summary><b>Answer</b></summary>
+
+```javascript
+array.slice(-1)[0]
+
+array.slice(-1).pop
+
+array[array.length -1]
+```
+</details>
+
 ---
 <span id="3"></span>
 ### (3) STRING FORMAT
