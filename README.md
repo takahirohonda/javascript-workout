@@ -7,7 +7,7 @@
 
 As with any programming language, JavaScript has its own way of solving problems. Knowing how to do basic data type conversion or array manipulations will make you deliver your solutions faster. 😊
 
-I hope this helps you to be more efficient JavaScript developer🤟💀🤟
+I hope this helps you to be a more efficient JavaScript developer🤟💀🤟
 
 Feel free to reach out to me🤙 <br />
 
@@ -224,6 +224,33 @@ function rankingSorter(firstKey, secondKey) {
 }
 
 input.sort(rankingSorter('score', 'name'));
+```
+</details>
+
+<b>6. Sorting object array by datetime</b>
+
+Sort array by datetime.
+
+input
+```javascript
+const arrays = [{datetime: '2020-04-29T03:23:48Z', spend: 300.00},
+{datetime: '2020-06-03T23:26:43Z', spend: 300.00},
+{datetime: '2021-05-30T17:28:14Z', spend: 300.00},
+{datetime: '2020-06-27T18:21:07Z', spend: 300.00}]
+```
+
+output - return the latest datetime record
+```javascript
+{datetime: '2021-05-30T17:28:14Z', spend: 300.00}
+```
+
+<details><summary><b>Answer</b></summary>
+
+Use custom function for sort. getTime() will convert datetime to a number of milliseconds since midnight Jan 1, 1970.
+```javascript
+arrays.sort((a, b) 
+  => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+)[0]
 ```
 </details>
 
