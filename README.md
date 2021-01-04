@@ -761,27 +761,33 @@ Update an existing property to create a new object in an immutable fashion.
 
 input
 ```javascript
-const fruit = { id: 1, name: 'apple' }
+const fruit = { id: 1, name: 'apple', taste: 'good' }
 ```
 
+Update two properties with spred syntax.
 output
 ```javascript
-{ id: 1, name: 'banana' }
+{ id: 1, name: 'banana', taste: 'great' }
 ```
 
 <details><summary><b>Answer</b></summary>
 
+To update multiple properties, we can just add them as below. 
+
 ```javascript
-const updatedFruit = { ...fruit, name: 'banana' }
+const updatedFruit = { ...fruit, name: 'banana', taste: 'great' }
 ```
+
+Note that the order of the properties does not matter.
+We can do it like `{ ...fruit, taste: 'sweet', id: 4 }` and it updates the correct property as long as the name matches.
 
 We can update the property of the object from an object with spread, too!
 
 ```javascript
-const update = { name: 'banana' }
+const update = { name: 'banana', taste: 'great' }
 const updatedFruit = { ...fruit, ...update }
 // this will update the property
-{ id: 1, name: 'banana' }
+{ id: 1, name: 'banana', taste: 'great' }
 ```
 </details>
 
