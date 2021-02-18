@@ -254,6 +254,91 @@ arrays.sort((a, b)
 ```
 </details>
 
+<b>7. Aggregate by year</b>
+
+Aggregate the percentage by key.
+
+input
+
+```javascript
+const breakdown = [
+  {
+    percentage: 80,
+    key: 2011
+  },
+  {
+    percentage: 10,
+    key: 2010
+  },
+  {
+    percentage: 5,
+    key: 2011
+  },
+  {
+    percentage: 5,
+    key: 2010
+  },
+  {
+    percentage: 5,
+    key: 2011
+  },
+]
+```
+
+output - return the sum of percentage by year.
+
+```javascript
+[
+  {
+    percentage: 90,
+    key: 2011
+  },
+  {
+    percentage: 15,
+    key: 2010
+  },
+]
+```
+
+<details><summary><b>Answer</b></summary>
+
+Approach 1: We can sort the data in a descending order and then use reduce to aggregate.
+
+```javascript
+const sorted = breakdown.sort((a, b) => a.key - b.key);
+
+const aggregated = breakdown
+  .sort((a, b) => b.key - a.key)
+  .reduce((acc, next) => {
+    const currentAccIndex = acc.length -1;
+    if (acc.length && acc[currentAccIndex].key === next.key) {
+      acc[currentAccIndex].percentage + next.percentage;
+    } else {
+      acc[currentAccIndex + 1] = next;
+    }
+    return acc;
+  }, []);
+```
+
+Approach 2: This feels more like a JS witchcraft, doesn't it? Using `Object.entries`, and then reduce to aggregate.
+
+```javascript
+const result = Object.entries(
+  breakdown.reduce(
+    (aggregate, current) => ({
+      ...aggregate,
+      [current.key]: (aggregate[current.key] ? aggregate[current.key] : 0) + current.percentage,
+    }),{})
+).map((aggregate) => ({
+    year: aggregate[0],
+    percentage: aggregate[1],
+}));
+
+console.log(`output from the 3rd way ${JSON.stringify(result)}`);
+```
+
+</details>
+
 ---
 <span id="2"></span>
 ### (2) ARRAY
