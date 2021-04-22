@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "noImplicitAny": true,
+    "strictNullChecks": false,
+    "types": ["jest", "node"],
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "skipLibCheck" : true,
+    "esModuleInterop": true
+  },
+  "include" : [
+      "./src/**/*", "reference/js/script.js", "quick-example"
+  ],
+  "exclude" : [
+      "./src/**/tests/**/*",
+      "node_modules"
+  ]
+}
