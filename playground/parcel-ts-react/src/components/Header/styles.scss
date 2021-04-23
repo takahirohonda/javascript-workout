@@ -2,5 +2,8 @@
 
 .headerText {
   font-family: $default-font-family;
-  font-size: 16px;
+  // this order has to be the same as @font-face import
+  font-style: normal;
+  font-weight: 700;
+  
 }
