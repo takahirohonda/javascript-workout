@@ -2,7 +2,7 @@
 
 They render html differntly
 
-```
+```bash
 $ jest
  FAIL  src/components/Wrapper/Wrapper.spec.tsx
   <Wrapper />

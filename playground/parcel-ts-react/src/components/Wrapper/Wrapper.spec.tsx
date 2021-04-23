@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import Wrapper from './Wrapper';
+import Wrapper from '.';
 
 describe('<Wrapper />', () => {
   test('renders with correct className with mount', () => {

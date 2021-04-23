@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Header from './components/Header';
+import './fonts/Lato/Lato.css';
 
 const App = () => (
-  <h1>Hello World</h1>
+  <Header>Hello World</Header>
 );
 
 export default App;
