@@ -562,6 +562,60 @@ array[array.length -1]
 ```
 </details>
 
+<b>10. Convert array to string</b>
+
+```js
+const language = [
+  'Japanese',
+  'Spanish',
+  'English',
+  'German',
+]
+```
+
+From the array above, return string representing the elements of the list.
+
+output
+```bash
+# (1)
+Japanese, Spanish, English, and German
+
+# (2) 
+Japanese, Spanish, English, or German
+
+# (3)
+Japanese Spanish English German
+```
+
+<details><summary><b>Answer</b></summary>
+
+Intl internationalization API has `ListFormat` object.  `Intl.ListFormat` is supported in all major browsers except IE11.
+
+```javascript
+// (1)
+const listFormatter = new Intl.ListFormat('en', {
+  style: 'long',
+  type: 'conjunction'
+});
+
+console.log(listFormatter.format(language));
+
+typeof(listFormatter.format(language)) // -> string
+
+// (2)
+const listFormatter = new Intl.ListFormat('en', {
+  style: 'short',
+  type: 'disjunction'
+});
+
+// (3)
+const listFormatter = new Intl.ListFormat('en', {
+  style: 'narrow',
+  type: 'unit'
+});
+```
+</details>
+
 ---
 <span id="3"></span>
 ### (3) STRING FORMAT
