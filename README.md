@@ -171,6 +171,19 @@ const sorter = (key) => {
 input.sort(sorter('score'));
 ```
 
+The above solution is too convoluted if we just want to sort by score. We can do this. This however does not work with `name` because they are string values.
+
+```js
+// Ascending
+input.sort((a, b) => a.score - b.score)
+
+// Descending
+input.sort((a, b) => b.score - a.score)
+
+// This doesn't work...
+input.sort((a, b) => b.name - a.name)
+```
+
 </details>
 
 <b>5. Sorting object array by multipe keys</b>
