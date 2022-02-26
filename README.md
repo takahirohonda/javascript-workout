@@ -2,7 +2,6 @@
   <img height="60" src="./img/javascript-logo.png">
   <h1>JavaScript Workout 💪🏼</h1>
 
-
 <span>This is a collection of short JavaScript programming solutions that you will encounter everyday.
 
 As with any programming language, JavaScript has its own way of solving problems. Knowing how to do basic data type conversion or array manipulations will make you deliver your solutions faster. 😊
@@ -27,21 +26,28 @@ If you want to make a suggestion or contribute to this, feel free to pull the re
 <br />
 
 ---
+
 <span id="1"></span>
+
 ### (1) ARRAY OF OBJECTS
+
 ---
 
 <b>1. Create an array of number from an array of an object and do calulation</b>
 
-input 
+input
+
 ```javascript
-const input = [{"name": "name A", "score": 2},
-{"name": "name B", "score": 1},
-{"name": "name C", "score": 4},
-{"name": "name D", "score": 5}]
+const input = [
+  { name: "name A", score: 2 },
+  { name: "name B", score: 1 },
+  { name: "name C", score: 4 },
+  { name: "name D", score: 5 },
+];
 ```
 
 output
+
 ```javascript
 # (1) Create an array
 [2, 1, 4, 5]
@@ -55,7 +61,7 @@ output
 
 <details><summary><b>Answer</b></summary>
 
-<b>Array.prototype.map</b> will create an array of the value from the selected key in the JSON object. 
+<b>Array.prototype.map</b> will create an array of the value from the selected key in the JSON object.
 
 <b>Array.prototype.reduce</b> will accumulate the number. The firt argument is the accumulator function and second argument is the starting value.
 
@@ -71,24 +77,29 @@ Array.from(input, ({score}) => score);
 # (2)
 imput.map(x => x.score).reduce((a, b) => a + b, 0);
 
-# (3) 
+# (3)
 Math.max.apply(null, input.map(x => x.score));
 // or use spread operator
 Math.max(...input.map(x => x.score));
 ```
+
 </details>
 
 <b>2. Getting max datetime from a string from the object array</b>
 
 input
+
 ```javascript
-const input = [{datetime: '2020-04-29T03:23:48Z', spend: 300.00},
-{datetime: '2020-06-03T23:26:43Z', spend: 300.00},
-{datetime: '2020-05-30T17:28:14Z', spend: 300.00},
-{datetime: '2020-06-27T18:21:07Z', spend: 300.00}]
+const input = [
+  { datetime: "2020-04-29T03:23:48Z", spend: 300.0 },
+  { datetime: "2020-06-03T23:26:43Z", spend: 300.0 },
+  { datetime: "2020-05-30T17:28:14Z", spend: 300.0 },
+  { datetime: "2020-06-27T18:21:07Z", spend: 300.0 },
+];
 ```
 
 output - return it as a Date object in the local time
+
 ```javascript
 Sun Jun 28 2020 04:21:07 GMT+1000
 ```
@@ -98,11 +109,17 @@ Sun Jun 28 2020 04:21:07 GMT+1000
 We can convert the string into a local time with new Date(). Then use the technique from question 1 to create an datetime array and apply max.
 
 ```javascript
-new Date(Math.max.apply(null, input.map(x => new Date(x.datetime))));
+new Date(
+  Math.max.apply(
+    null,
+    input.map((x) => new Date(x.datetime))
+  )
+);
 
 // or use spread
-new Date(Math.max(...input.map(x => new Date(x.datetime))));
+new Date(Math.max(...input.map((x) => new Date(x.datetime))));
 ```
+
 </details>
 
 <b>3. Adding new key-value pair in all the objects in an array</b>
@@ -110,13 +127,19 @@ new Date(Math.max(...input.map(x => new Date(x.datetime))));
 You have an array of an object with name. Can you add an unique id to all the objects?
 
 input
+
 ```javascript
-const input = [{name: 'John'}, {name: 'Tyson'}, {name: 'Joan'}]
+const input = [{ name: "John" }, { name: "Tyson" }, { name: "Joan" }];
 ```
 
 output
+
 ```javascript
-[{name: 'John', id: 1}, {name: 'Tyson', id: 2}, {name: 'Joan', id: 3}]
+[
+  { name: "John", id: 1 },
+  { name: "Tyson", id: 2 },
+  { name: "Joan", id: 3 },
+];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -124,7 +147,7 @@ output
 We can use the map and use the index to add an unique id that increments.
 
 ```javascript
-input.map((data, index) => ({name: data.name, id: index + 1}));
+input.map((data, index) => ({ name: data.name, id: index + 1 }));
 ```
 
 </details>
@@ -132,17 +155,20 @@ input.map((data, index) => ({name: data.name, id: index + 1}));
 <b>4. Sorting object array by a key</b>
 
 input
+
 ```javascript
-const input = [{ name: "John", score: "432"},
- { name: "Joe", score: "125"},
- { name: "Zoe", score: "320"},
- { name: "Ziggy", score: "532"},
- { name: "Dave", score: "211"},
- { name: "Sarah", score: "621"}
+const input = [
+  { name: "John", score: "432" },
+  { name: "Joe", score: "125" },
+  { name: "Zoe", score: "320" },
+  { name: "Ziggy", score: "532" },
+  { name: "Dave", score: "211" },
+  { name: "Sarah", score: "621" },
 ];
 ```
 
 output - sort it in descending order
+
 ```javascript
 0: {name: "Sarah", score: "621"}
 1: {name: "Ziggy", score: "532"}
@@ -165,23 +191,23 @@ const sorter = (key) => {
     } else {
       return 0;
     }
-  }
-}
+  };
+};
 
-input.sort(sorter('score'));
+input.sort(sorter("score"));
 ```
 
 The above solution is too convoluted if we just want to sort by score. We can do this. This however does not work with `name` because they are string values.
 
 ```js
 // Ascending
-input.sort((a, b) => a.score - b.score)
+input.sort((a, b) => a.score - b.score);
 
 // Descending
-input.sort((a, b) => b.score - a.score)
+input.sort((a, b) => b.score - a.score);
 
 // This doesn't work...
-input.sort((a, b) => b.name - a.name)
+input.sort((a, b) => b.name - a.name);
 ```
 
 </details>
@@ -191,17 +217,21 @@ input.sort((a, b) => b.name - a.name)
 We sorted an object array by a key in the previous question. What if the score is tie and want to sort it by the second key, name.
 
 input
+
 ```javascript
-const input = [{ name: "John", score: "432"},
- { name: "Joe", score: "125"},
- { name: "Zoe", score: "320"},
- { name: "Ziggy", score: "532"},
- { name: "Dave", score: "211"},
- { name: "Sarah", score: "621"},
- { name: "Alex", score: "320"}];
+const input = [
+  { name: "John", score: "432" },
+  { name: "Joe", score: "125" },
+  { name: "Zoe", score: "320" },
+  { name: "Ziggy", score: "532" },
+  { name: "Dave", score: "211" },
+  { name: "Sarah", score: "621" },
+  { name: "Alex", score: "320" },
+];
 ```
 
 output - see when the sore is the same, it's sorted by name.
+
 ```javascript
 0: {name: "Sarah", score: "621"}
 1: {name: "Ziggy", score: "532"}
@@ -218,26 +248,26 @@ Apply the same method for the previous question. When the first key is the same,
 
 ```javascript
 function rankingSorter(firstKey, secondKey) {
-  return function(a, b) {  
-    if (a[firstKey] > b[firstKey]) {  
-      return -1;  
-    } else if (a[firstKey] < b[firstKey]) {  
-      return 1;  
-    }  
-    else {
-      if (a[secondKey] > b[secondKey]) {  
-        return 1;  
-      } else if (a[secondKey] < b[secondKey]) {  
-        return -1;  
+  return function (a, b) {
+    if (a[firstKey] > b[firstKey]) {
+      return -1;
+    } else if (a[firstKey] < b[firstKey]) {
+      return 1;
+    } else {
+      if (a[secondKey] > b[secondKey]) {
+        return 1;
+      } else if (a[secondKey] < b[secondKey]) {
+        return -1;
       } else {
         return 0;
       }
-    } 
-  }  
+    }
+  };
 }
 
-input.sort(rankingSorter('score', 'name'));
+input.sort(rankingSorter("score", "name"));
 ```
+
 </details>
 
 <b>6. Sorting object array by datetime</b>
@@ -245,14 +275,18 @@ input.sort(rankingSorter('score', 'name'));
 Sort array by datetime.
 
 input
+
 ```javascript
-const arrays = [{datetime: '2020-04-29T03:23:48Z', spend: 300.00},
-{datetime: '2020-06-03T23:26:43Z', spend: 300.00},
-{datetime: '2021-05-30T17:28:14Z', spend: 300.00},
-{datetime: '2020-06-27T18:21:07Z', spend: 300.00}]
+const arrays = [
+  { datetime: "2020-04-29T03:23:48Z", spend: 300.0 },
+  { datetime: "2020-06-03T23:26:43Z", spend: 300.0 },
+  { datetime: "2021-05-30T17:28:14Z", spend: 300.0 },
+  { datetime: "2020-06-27T18:21:07Z", spend: 300.0 },
+];
 ```
 
 output - return the latest datetime record
+
 ```javascript
 {datetime: '2021-05-30T17:28:14Z', spend: 300.00}
 ```
@@ -260,11 +294,13 @@ output - return the latest datetime record
 <details><summary><b>Answer</b></summary>
 
 Use custom function for sort. getTime() will convert datetime to a number of milliseconds since midnight Jan 1, 1970.
+
 ```javascript
-arrays.sort((a, b) 
+arrays.sort((a, b)
   => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 )[0]
 ```
+
 </details>
 
 <b>7. Aggregate by year</b>
@@ -277,25 +313,25 @@ input
 const breakdown = [
   {
     percentage: 80,
-    key: 2011
+    key: 2011,
   },
   {
     percentage: 10,
-    key: 2010
+    key: 2010,
   },
   {
     percentage: 5,
-    key: 2011
+    key: 2011,
   },
   {
     percentage: 5,
-    key: 2010
+    key: 2010,
   },
   {
     percentage: 5,
-    key: 2011
+    key: 2011,
   },
-]
+];
 ```
 
 output - return the sum of percentage by year.
@@ -304,13 +340,13 @@ output - return the sum of percentage by year.
 [
   {
     percentage: 90,
-    key: 2011
+    key: 2011,
   },
   {
     percentage: 15,
-    key: 2010
+    key: 2010,
   },
-]
+];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -323,7 +359,7 @@ const sorted = breakdown.sort((a, b) => a.key - b.key);
 const aggregated = breakdown
   .sort((a, b) => b.key - a.key)
   .reduce((acc, next) => {
-    const currentAccIndex = acc.length -1;
+    const currentAccIndex = acc.length - 1;
     if (acc.length && acc[currentAccIndex].key === next.key) {
       acc[currentAccIndex].percentage + next.percentage;
     } else {
@@ -340,11 +376,15 @@ const result = Object.entries(
   breakdown.reduce(
     (aggregate, current) => ({
       ...aggregate,
-      [current.key]: (aggregate[current.key] ? aggregate[current.key] : 0) + current.percentage,
-    }),{})
+      [current.key]:
+        (aggregate[current.key] ? aggregate[current.key] : 0) +
+        current.percentage,
+    }),
+    {}
+  )
 ).map((aggregate) => ({
-    year: aggregate[0],
-    percentage: aggregate[1],
+  year: aggregate[0],
+  percentage: aggregate[1],
 }));
 
 console.log(`output from the 3rd way ${JSON.stringify(result)}`);
@@ -353,15 +393,19 @@ console.log(`output from the 3rd way ${JSON.stringify(result)}`);
 </details>
 
 ---
+
 <span id="2"></span>
+
 ### (2) ARRAY
+
 ---
 
 <b>1. Create an array with a sequence of number</b>
 
 output
+
 ```javascript
-[0, 1, 2, 3, 4]
+[0, 1, 2, 3, 4];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -371,11 +415,11 @@ We can use either spread operator or Array from() and key() for ES6✌
 For a reference, knowing how to use the Set object is great. Interestingly, this is not supported by IE11. If you do Array.from(new Set([1, 2, 3])), you will get an empty array without an error. Use set polyfill for IE11 support.
 
 ```javascript
-[ ...Array(5).keys() ]
+[...Array(5).keys()];
 
-Array.from(Array(5).keys())
+Array.from(Array(5).keys());
 
-Array.from(new Set([0, 1, 2, 3, 4]))
+Array.from(new Set([0, 1, 2, 3, 4]));
 ```
 
 </details>
@@ -385,19 +429,20 @@ Array.from(new Set([0, 1, 2, 3, 4]))
 Remove duplicate value from an array.
 
 ```javascript
-const arr = ['apple', 'orange', 'banana', 'orange', 'apple' ];
+const arr = ["apple", "orange", "banana", "orange", "apple"];
 ```
 
 <details><summary><b>Answer</b></summary>
 
-We can use Set() and either Array.from or spread
+The `Set` type is new in ES6. It's similar to array, but not quite. It contains no duplicate value (member values are unique). So first, we dedupe by converting array into a set object and then convert back to an array with `Array.from` or spread operator.
 
 ```javascript
 Array.from(new Set(arr));
 
 // or
-[ ...new Set(arr) ]
+[...new Set(arr)];
 ```
+
 </details>
 
 <b>3. Replace the specific value</b>
@@ -405,13 +450,15 @@ Array.from(new Set(arr));
 Replace watermelon with blueberry in the array below.
 
 input
+
 ```javascript
-const fruits = [ 'apple', 'banana', 'watermelon', 'melon' ];
+const fruits = ["apple", "banana", "watermelon", "melon"];
 ```
 
 output
+
 ```javascript
-[ 'apple', 'banana', 'blueberry', 'melon' ]
+["apple", "banana", "blueberry", "melon"];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -419,11 +466,12 @@ output
 Use map with if condition✌
 
 ```javascript
-const newFruits = fruits.map(x => {
-  if (x === 'watermelon') return 'blueberry';
+const newFruits = fruits.map((x) => {
+  if (x === "watermelon") return "blueberry";
   return x;
 });
 ```
+
 </details>
 
 <b>4. modulo operation</b>
@@ -431,13 +479,15 @@ const newFruits = fruits.map(x => {
 Create an array of the reminder after dividing each by 3. Let's try map the value without using map(). What can you do?
 
 input
+
 ```javascript
-const input = [ 3, 4, 5, 6, 7 ];
+const input = [3, 4, 5, 6, 7];
 ```
 
 output
+
 ```javascript
-[ 0, 1, 2, 0, 1]
+[0, 1, 2, 0, 1];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -445,7 +495,7 @@ output
 We can map array without using .map(). Array.from takes arrayLike object as an first argument and map function applied to every element of the array as a second argument. Third argument is the value to use as this when executing map function. Second and thrid arguments are optional.
 
 ```javascript
-Array.from(input, x => x % 3);
+Array.from(input, (x) => x % 3);
 ```
 
 </details>
@@ -455,14 +505,17 @@ Array.from(input, x => x % 3);
 Empty the array below:
 
 input
+
 ```javascript
 const arr = [1, 2, 3, 4];
 ```
 
 output
+
 ```javascript
-[]
+[];
 ```
+
 <details><summary><b>Answer</b></summary>
 
 We can just set the array length to 0. That's it🤯
@@ -470,6 +523,7 @@ We can just set the array length to 0. That's it🤯
 ```javascript
 arr.length = 0;
 ```
+
 </details>
 
 <b>6. Fill an empty array</b>
@@ -477,8 +531,9 @@ arr.length = 0;
 Create an array of 10 1s as below.
 
 output
+
 ```javascript
-[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+[1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -496,14 +551,16 @@ new Array(10).fill(1);
 Find the common value from two arrays.
 
 input
+
 ```javascript
 const numOne = [0, 2, 4, 6, 8, 8];
 const numTwo = [1, 2, 3, 4, 5, 6];
 ```
 
 output
+
 ```javascript
-[2, 4, 6]
+[2, 4, 6];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -511,8 +568,9 @@ output
 First, we need de-duplicate the first array and use filter to find the common value.
 
 ```javascript
-[ ...new Set(numOne)].filter(x => numTwo.includes(x));
+[...new Set(numOne)].filter((x) => numTwo.includes(x));
 ```
+
 </details>
 
 <b>8. Get random value from an array</b>
@@ -520,7 +578,7 @@ First, we need de-duplicate the first array and use filter to find the common va
 Return random value from the color array below
 
 ```javascript
-const colors = ['blue', 'white', 'green', 'navy', 'pink', 'black', 'brown'];
+const colors = ["blue", "white", "green", "navy", "pink", "black", "brown"];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -530,6 +588,7 @@ Math.ramdom() yeilds a random number between 0 and one. Then, we multiply with l
 ```javascript
 colors[Math.floor(Math.random() * colors.length)];
 ```
+
 </details>
 
 <b>9. Get the last index of the value that occurs</b>
@@ -547,15 +606,15 @@ Here is the interesting method that javascript has. lastIndexOf().
 ```javascript
 nums.lastIndexOf(5);
 ```
-</details>
 
+</details>
 
 <b>9. Get the last element of an array</b>
 
 Get the last element of the array
 
 ```javascript
-const array = [1, 2, 3, 4]
+const array = [1, 2, 3, 4];
 ```
 
 output
@@ -567,33 +626,30 @@ output
 <details><summary><b>Answer</b></summary>
 
 ```javascript
-array.slice(-1)[0]
+array.slice(-1)[0];
 
-array.slice(-1).pop
+array.slice(-1).pop;
 
-array[array.length -1]
+array[array.length - 1];
 ```
+
 </details>
 
 <b>10. Convert array to string</b>
 
 ```js
-const language = [
-  'Japanese',
-  'Spanish',
-  'English',
-  'German',
-]
+const language = ["Japanese", "Spanish", "English", "German"];
 ```
 
 From the array above, return string representing the elements of the list.
 
 output
+
 ```bash
 # (1)
 Japanese, Spanish, English, and German
 
-# (2) 
+# (2)
 Japanese, Spanish, English, or German
 
 # (3)
@@ -602,48 +658,54 @@ Japanese Spanish English German
 
 <details><summary><b>Answer</b></summary>
 
-Intl internationalization API has `ListFormat` object.  `Intl.ListFormat` is supported in all major browsers except IE11.
+Intl internationalization API has `ListFormat` object. `Intl.ListFormat` is supported in all major browsers except IE11.
 
 ```javascript
 // (1)
-const listFormatter = new Intl.ListFormat('en', {
-  style: 'long',
-  type: 'conjunction'
+const listFormatter = new Intl.ListFormat("en", {
+  style: "long",
+  type: "conjunction",
 });
 
 console.log(listFormatter.format(language));
 
-typeof(listFormatter.format(language)) // -> string
+typeof listFormatter.format(language); // -> string
 
 // (2)
-const listFormatter = new Intl.ListFormat('en', {
-  style: 'short',
-  type: 'disjunction'
+const listFormatter = new Intl.ListFormat("en", {
+  style: "short",
+  type: "disjunction",
 });
 
 // (3)
-const listFormatter = new Intl.ListFormat('en', {
-  style: 'narrow',
-  type: 'unit'
+const listFormatter = new Intl.ListFormat("en", {
+  style: "narrow",
+  type: "unit",
 });
 ```
+
 </details>
 
 ---
+
 <span id="3"></span>
+
 ### (3) STRING FORMAT
+
 ---
 
 <b>1. Currency Format</b>
 
 input
+
 ```javascript
-const amount = 2398622.26
+const amount = 2398622.26;
 ```
 
 output
+
 ```javascript
-'$2,398,622.26'
+"$2,398,622.26";
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -653,7 +715,7 @@ By using toLocaleString(), we can format currency with one line🤯
 ```javascript
 amount.toLocaleString("en-US", {
   style: "currency",
-  currency: "USD"
+  currency: "USD",
 });
 ```
 
@@ -665,19 +727,20 @@ If you want to do this without native API, it gets really intense...
 
 ```javascript
 const formatAmount = (amount) => {
-  const splitAmount = amount.split('.')
-  const dollar = splitAmount[0]
-  const decimal = splitAmount[1]
-  const index = dollar.length / 3
-  const dollarArray = []
+  const splitAmount = amount.split(".");
+  const dollar = splitAmount[0];
+  const decimal = splitAmount[1];
+  const index = dollar.length / 3;
+  const dollarArray = [];
   for (let i = 1; i <= index + 1; i++) {
-    const startIndex = dollar.length - (i * 2) - 1 - (i - 1)
-    const finalStartIndex = startIndex < 0 ? 0 : startIndex
-    dollarArray.push(dollar.substring(finalStartIndex, startIndex + 3))
+    const startIndex = dollar.length - i * 2 - 1 - (i - 1);
+    const finalStartIndex = startIndex < 0 ? 0 : startIndex;
+    dollarArray.push(dollar.substring(finalStartIndex, startIndex + 3));
   }
-  return `$${dollarArray.reverse().join(',')}.${decimal}`
-}
+  return `$${dollarArray.reverse().join(",")}.${decimal}`;
+};
 ```
+
 </details>
 
 <b>2. Datetime formatting</b>
@@ -686,48 +749,54 @@ Formatting the datetime string below into a local time.
 
 input
 
-``` javascript
-'2020-06-28T23:59:01Z'
+```javascript
+"2020-06-28T23:59:01Z";
 ```
 
 output - this is the local time (AEST for me)
 
-``` javascript
-'29/06/2020 09:59:01 AM'
+```javascript
+"29/06/2020 09:59:01 AM";
 ```
 
 <details><summary><b>Answer</b></summary>
 
 Let's give it a go by using <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat">Intl.DateTimeFormat.</a> This will give you '29/06/2020'.
 
-``` javascript
-new Intl.DateTimeFormat('en-AU').format(new Date('2020-06-28T23:59:01Z'));
+```javascript
+new Intl.DateTimeFormat("en-AU").format(new Date("2020-06-28T23:59:01Z"));
 ```
 
 Now, Intl.DateTimeFormat has options. Let's pass the options.
 
 ```javascript
 const options = {
-  year: 'numeric', month: 'numeric', day: 'numeric',
-  hour: 'numeric', minute: 'numeric', second: 'numeric',
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
   hour12: true,
-  timeZone: 'Australia/Sydney' 
+  timeZone: "Australia/Sydney",
 };
 
-const formatted = new Intl.DateTimeFormat('en-AU', options).format(new Date('2020-06-28T23:59:01Z'));
+const formatted = new Intl.DateTimeFormat("en-AU", options).format(
+  new Date("2020-06-28T23:59:01Z")
+);
 ```
 
 The above will give us the output of '29/06/2020, 9:59:01 am'. We need to format this.
 
 ```javascript
-formatted.toUpperCase().split(', ').join(' ');
+formatted.toUpperCase().split(", ").join(" ");
 ```
 
 That's it🤙
 
 If you want to do this without native API, it gets long🐢
 
-``` typescript
+```typescript
 formatUtcToLocal(timestamp: string): string {
   const localTime = new Date(timestamp)
   const year = localTime.getFullYear()
@@ -753,11 +822,15 @@ convertHour(hour: number): number {
   return hour
 }
 ```
+
 </details>
 
 ---
+
 <span id="4"></span>
+
 ### (4) SPREAD SYNTAX
+
 ---
 
 Spread syntax is cool🥳 Use spread syntax for all the questions. Let's build spread syntax muscle memory! 🐣🐣🐣
@@ -765,26 +838,29 @@ Spread syntax is cool🥳 Use spread syntax for all the questions. Let's build s
 <b>1. Spread with arrays</b>
 
 input
+
 ```javascript
-const fruits = ['apple', 'banana', 'blueberry'];
-const vegs = ['lettus', 'tomato']
+const fruits = ["apple", "banana", "blueberry"];
+const vegs = ["lettus", "tomato"];
 ```
 
 Without spread, we would use concat to combine two arrays. Use spread syntax to concat two arrays.
 
 output
+
 ```javascript
-['apple', 'banana', 'blueberry', 'lettus', 'tomato']
+["apple", "banana", "blueberry", "lettus", "tomato"];
 ```
 
 <details><summary><b>Answer</b></summary>
 
 ```javascript
-const combined = [ ...fruits, ...vegs ];
+const combined = [...fruits, ...vegs];
 
 // it is the same as
 const combined = fruits.concat(vegs);
 ```
+
 </details>
 
 <b>2. Add object to an array</b>
@@ -792,21 +868,30 @@ const combined = fruits.concat(vegs);
 Create a new object with a new fruit added and preserve original fruits array the same.
 
 input
+
 ```javascript
-const fruits = [{ id: 1, item: 'apple' }, { id: 2, item: 'orange' }];
-const newFruit = { id: 3, item: 'banana' };
+const fruits = [
+  { id: 1, item: "apple" },
+  { id: 2, item: "orange" },
+];
+const newFruit = { id: 3, item: "banana" };
 ```
 
 output
+
 ```javascript
 // Create a new object called newFruits
-[{ id: 1, item: 'apple' }, { id: 2, item: 'orange' }, { id: 3, item: 'banana' }]
+[
+  { id: 1, item: "apple" },
+  { id: 2, item: "orange" },
+  { id: 3, item: "banana" },
+];
 ```
 
 <details><summary><b>Answer</b></summary>
 
 ```javascript
-const newFruits = [ ...fruits, newFruit];
+const newFruits = [...fruits, newFruit];
 ```
 
 If you use Array.push() as below, it will modify the original array fruits. With spreading, we can preserve the original array.
@@ -814,6 +899,7 @@ If you use Array.push() as below, it will modify the original array fruits. With
 ```javascript
 fruits.push(newFruit);
 ```
+
 </details>
 
 <b>3. Create an array from a set</b>
@@ -821,16 +907,18 @@ fruits.push(newFruit);
 We can use spread syntax to create an iterable array from a set.
 
 input
+
 ```javascript
 const fruitSet = new Set();
-set.add('apple');
-set.add('orange');
-set.add('banana');
+set.add("apple");
+set.add("orange");
+set.add("banana");
 ```
 
 output - create a new array called fruitArray
+
 ```javascript
-['apple', 'orange', 'banana']
+["apple", "orange", "banana"];
 ```
 
 <b>4. Create an array from a string</b>
@@ -838,20 +926,23 @@ output - create a new array called fruitArray
 We can also use spread to create an array from a string.
 
 input
+
 ```javascript
-const str = 'spread';
+const str = "spread";
 ```
 
 output
+
 ```javascript
-['s', 'p', 'e', 'a', 'd']
+["s", "p", "e", "a", "d"];
 ```
 
 <details><summary><b>Answer</b></summary>
 
 ```javascript
-const strArray = [ ...str ];
+const strArray = [...str];
 ```
+
 </details>
 
 <b>5. Copying an object</b>
@@ -859,8 +950,9 @@ const strArray = [ ...str ];
 We can spread an object to copy and update. It is the equivalent of Object.assign().
 
 input
+
 ```javascript
-const original = { id: 1, fruit: 'apple' }
+const original = { id: 1, fruit: "apple" };
 ```
 
 output - create an copy of the original, copied.
@@ -872,9 +964,11 @@ const copied = { ...original };
 ```
 
 This is the equivalent of
+
 ```javascript
 const copied = Object.assign({}, original);
 ```
+
 </details>
 
 <b>6. Adding a new property on an exisitng object</b>
@@ -882,11 +976,13 @@ const copied = Object.assign({}, original);
 Add a new property to an exisitng object in an immutable fashion.
 
 input
+
 ```javascript
-const fruit = { id: 1, name: 'apple' }
+const fruit = { id: 1, name: "apple" };
 ```
 
 output
+
 ```javascript
 { id: 1, name: 'apple', sweet: true }
 ```
@@ -894,7 +990,7 @@ output
 <details><summary><b>Answer</b></summary>
 
 ```javascript
-const updatedFruit = { ...fruit, sweet: true }
+const updatedFruit = { ...fruit, sweet: true };
 ```
 
 We can do the spread if the added proerty is an object as below.
@@ -905,6 +1001,7 @@ const updatedFruit = { ...fruit, ...add }
 // Then this will create the object with a new property
 { id: 1, name: 'apple', sweet: true }
 ```
+
 </details>
 
 <b>7. Updating a property on an exisitng object</b>
@@ -912,22 +1009,24 @@ const updatedFruit = { ...fruit, ...add }
 Update an existing property to create a new object in an immutable fashion.
 
 input
+
 ```javascript
-const fruit = { id: 1, name: 'apple', taste: 'good' }
+const fruit = { id: 1, name: "apple", taste: "good" };
 ```
 
 Update two properties with spred syntax.
 output
+
 ```javascript
 { id: 1, name: 'banana', taste: 'great' }
 ```
 
 <details><summary><b>Answer</b></summary>
 
-To update multiple properties, we can just add them as below. 
+To update multiple properties, we can just add them as below.
 
 ```javascript
-const updatedFruit = { ...fruit, name: 'banana', taste: 'great' }
+const updatedFruit = { ...fruit, name: "banana", taste: "great" };
 ```
 
 Note that the order of the properties does not matter.
@@ -941,6 +1040,7 @@ const updatedFruit = { ...fruit, ...update }
 // this will update the property
 { id: 1, name: 'banana', taste: 'great' }
 ```
+
 </details>
 
 <b>8. Spread with nested object</b>
@@ -948,20 +1048,22 @@ const updatedFruit = { ...fruit, ...update }
 Spread with nested object gets hairy. See if you can add a new property to the nested object as below.
 
 input
+
 ```javascript
-const fruit = { 
-  id: 1, 
+const fruit = {
+  id: 1,
   item: {
-    name: 'apple',
-    sweet: true 
-  }
-}
+    name: "apple",
+    sweet: true,
+  },
+};
 ```
 
 output - add an price property to item
+
 ```javascript
-{ 
-  id: 1, 
+{
+  id: 1,
   item: {
     name: 'apple',
     sweet: true,
@@ -975,7 +1077,7 @@ output - add an price property to item
 Nested objects need to be spread. In another word, we can spread the inner object, item, to retain the existing property.
 
 ```javascript
-const newFruit = { ...fruit, item: { ...fruit.item, price: 1.0 } }
+const newFruit = { ...fruit, item: { ...fruit.item, price: 1.0 } };
 ```
 
 </details>
@@ -985,24 +1087,26 @@ const newFruit = { ...fruit, item: { ...fruit.item, price: 1.0 } }
 Use spread to update item.price.amount to 2.0.
 
 input
+
 ```javascript
-const fruit = { 
-  id: 1, 
+const fruit = {
+  id: 1,
   item: {
-    name: 'apple',
+    name: "apple",
     sweet: true,
     price: {
-      currency: 'US',
-      amount: 1.0
-    }
-  }
-}
+      currency: "US",
+      amount: 1.0,
+    },
+  },
+};
 ```
 
 output - add an price property to item
+
 ```javascript
-{ 
-  id: 1, 
+{
+  id: 1,
   item: {
     name: 'apple',
     sweet: true,
@@ -1017,17 +1121,18 @@ output - add an price property to item
 <details><summary><b>Answer</b></summary>
 
 ```javascript
-const updated = { 
-  ...fruit, 
-  item: { 
-    ...fruit.item, 
-    price: { 
-      ...fruit.item.price, 
-      amount: 2.0 
-    }
-  }
-}
+const updated = {
+  ...fruit,
+  item: {
+    ...fruit.item,
+    price: {
+      ...fruit.item.price,
+      amount: 2.0,
+    },
+  },
+};
 ```
+
 </details>
 
 <b>10. Spread function call</b>
@@ -1052,8 +1157,9 @@ addAll(...input);
 This is the same as using apply(). But, spread makes it shorter.
 
 ```javascript
-addAll.apply(null, input)
+addAll.apply(null, input);
 ```
+
 </details>
 
 <b>11. Convert array to an object</b>
@@ -1061,11 +1167,13 @@ addAll.apply(null, input)
 Another interesting use case for spread. Convert the array to an object as below.
 
 input
+
 ```javascript
-const arr = [ '1', '2', '3']
+const arr = ["1", "2", "3"];
 ```
 
 output
+
 ```javascript
 { 0: '1', 1: '2', 2: '3' }
 ```
@@ -1077,14 +1185,18 @@ It's the quick and dirty way to convert an array to an object with spread✌
 ```javascript
 { ...arr }
 ```
+
 </details>
 
 ---
+
 <span id="5"></span>
+
 ### (5) REST PARAMETER SYNTAX
+
 ---
 
-In JavaScript, three dot syntax is interesting. It can be either spread or rest parameter syntax and they do exactly the opposite🤯 Let's test your knowledge on rest parameter syntax🚀	
+In JavaScript, three dot syntax is interesting. It can be either spread or rest parameter syntax and they do exactly the opposite🤯 Let's test your knowledge on rest parameter syntax🚀
 
 <b>1. ...args</b>
 
@@ -1095,7 +1207,7 @@ function check(...args) {
   console.log(args);
 }
 
-check(1, 2, 3, 4)
+check(1, 2, 3, 4);
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -1105,8 +1217,9 @@ Rest parameter syntax will create an array instead of unpacking an array of obje
 The output will become an array of numbers🤯
 
 ```javascript
-[1, 2, 3, 4]
+[1, 2, 3, 4];
 ```
+
 </details>
 
 <b>2. ...args with other argments</b>
@@ -1120,7 +1233,7 @@ function check(firstNum, secondNum, ...args) {
   console.log(args);
 }
 
-check(1, 2, 3, 4, 5)
+check(1, 2, 3, 4, 5);
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -1130,10 +1243,10 @@ Rest parameter syntax will create an array instead of unpacking an array of obje
 The output will become an array of numbers🤯
 
 ```javascript
-1
-2
-[3, 4, 5]
+1;
+(2)[(3, 4, 5)];
 ```
+
 </details>
 
 <b>3. Destructing an array</b>
@@ -1141,10 +1254,10 @@ The output will become an array of numbers🤯
 What is the output of below code?
 
 ```javascript
-const [ first, ...rest ] = ['apple', 'banana', 'grape' ];
+const [first, ...rest] = ["apple", "banana", "grape"];
 
 console.log(first);
-console.log(rest)
+console.log(rest);
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -1152,19 +1265,19 @@ console.log(rest)
 Rest parameter can be used when destructing arrays. ...rest will creates the shorter array.
 
 ```javascript
-apple
-['banana', 'grape']
+apple[("banana", "grape")];
 ```
+
 </details>
 
 <b>4. Destructing an object</b>
 What is the output of below code?
 
 ```javascript
-const { id, ...rest } = {id: 1, name: 'apple', price: 1.0 };
+const { id, ...rest } = { id: 1, name: "apple", price: 1.0 };
 
 console.log(id);
-console.log(rest)
+console.log(rest);
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -1175,6 +1288,7 @@ Rest parameter can be used when destructing objects.
 1
 { name: 'apple', price: 1.0 }
 ```
+
 </details>
 
 <br />
@@ -1182,6 +1296,7 @@ Rest parameter can be used when destructing objects.
 ---
 
 ### REFERNCES
+
 ---
 
 There is a greate JavaScript questions to get to know the language better. Your JavaScript knowledge will skyrocket🚀 Check out <a target="_blank" href="https://github.com/lydiahallie/javascript-questions">javascript-questions</a>
