@@ -22,6 +22,7 @@ If you want to make a suggestion or contribute to this, feel free to pull the re
 <p><b><a href="#3">(3) String format</a></b></P>
 <p><b><a href="#4">(4) Spread Syntax</a></b></P>
 <p><b><a href="#5">(5) Rest Parameter Syntax</a></b></P>
+<p><b><a href="#6">(6) Trivia</a></b></P>
 </div>
 <br />
 
@@ -1288,6 +1289,34 @@ Rest parameter can be used when destructing objects.
 1
 { name: 'apple', price: 1.0 }
 ```
+
+</details>
+
+<br />
+
+<span id="6"></span>
+
+### (6) Trivia
+
+<b>1. Truthy or Falsy?</b>
+
+Which one is evaluated as truthy?
+
+1. the number `0`
+2. the BigInt `0n`
+3. the keyword `null`
+4. the keyword `undefined`
+5. the boolean `false`
+6. the number `NaN`
+7. empty string `''`
+8. empty array `[]`
+9. empty object `{}`
+
+<details><summary><b>Answer</b></summary>
+
+Empty array `[]` and empty object `{}` are evaluated as `truthy`.
+
+Any primitive type evaluate to true in JavaScript, with the exception of 1 to 7🤯
 
 </details>
 
