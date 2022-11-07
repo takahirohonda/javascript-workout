@@ -1015,7 +1015,7 @@ input
 const fruit = { id: 1, name: "apple", taste: "good" };
 ```
 
-Update two properties with spred syntax.
+Update two properties with spread syntax.
 output
 
 ```javascript
@@ -1319,7 +1319,20 @@ Empty array `[]` and empty object `{}` are evaluated as `truthy`.
 Any primitive type evaluate to true in JavaScript, with the exception of 1 to 7🤯
 
 </details>
+<br />
 
+<b>2. What is !!</b>
+
+<details><summary><b>Answer</b></summary>
+
+Returns an associated boolean value. True or false according to whether it is truthy or falsy values.
+
+```javascript
+const number = 12;
+!!number; // returns true
+```
+
+</details>
 <br />
 
 ---
