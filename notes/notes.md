@@ -1,3 +1,11 @@
+## Random things
+
+1. why `type of variableA === 'undefined'` is safer than `variableA === undefined` when asserting the undefined equality?
+
+Because undefined can be redefined in JavaScript. I know this only happens under a crazy circumstance and almost never happens, but it can. So when undefined is redefined `undefined === 'WTF'`, the latter assertion goes weird.
+
+## JS is weird
+
 From https://jsisweird.com/
 
 1. true + false
@@ -144,7 +152,7 @@ These two empty strings are both converted to 0.
 
 ```js
 Number(""); // -> 0
-0 - - 0; // -> 0
+0 - -0; // -> 0
 ```
 
 The expression might become a bit clearer if I write it like this:
@@ -171,11 +179,13 @@ Null converts to its numeric representation: 0.
 Number(null); // -> 0
 0 + 0; // -> 0
 ```
+
 This also means that while...
 
 ```js
 null === false; // -> false
 ```
+
 ... this is true:
 
 ```js
@@ -189,7 +199,7 @@ Output: NaN
 As there is no meaningful numerical answer to the equation 0/0, the output is simply NaN.
 
 ```js
-isNaN(0/0); // -> true
+isNaN(0 / 0); // -> true
 ```
 
 14. 1/0 > Math.pow(10, 1000)
@@ -199,7 +209,7 @@ Output: false
 JavaScript treats both of these values as infinite, and infinity is equal to infinity. Learn more about infinities on Wikipedia.
 
 ```js
-1/0; // -> Infinity
+1 / 0; // -> Infinity
 Math.pow(10, 1000); // -> Infinity
 Infinity > Infinity; // -> false
 ```
@@ -242,6 +252,7 @@ This would still be true even if the string had a space (or more) inside of it:
 ```js
 " " - 1; // -> -1;
 ```
+
 However, if we use the addition operator, then string concatenation takes priority:
 
 ```js
@@ -260,7 +271,7 @@ Number(null) - 0; // -> 0
 But if the question had used only the subtraction operator, the result would have been different:
 
 ```js
-(null - 0) - "0"; // -> 0
+null - 0 - "0"; // -> 0
 ```
 
 18. true + ("true" - 0)
@@ -274,16 +285,15 @@ Number("true"); // -> NaN
 ```
 
 19. !5 + !5
-Output: 0
-You answered: 0
-You got it right!
-All positive numbers are represented by the boolean true. The opposite of true is false, and false converts to 0.
+    Output: 0
+    You answered: 0
+    You got it right!
+    All positive numbers are represented by the boolean true. The opposite of true is false, and false converts to 0.
 
 Boolean(5); // -> true
 !true; // -> false
 Number(false); // -> 0
-0 + 0; // -> 0
-20. [] + []
+0 + 0; // -> 0 20. [] + []
 Output: ""
 You answered: []
 You answered incorrectly.
@@ -301,8 +311,7 @@ Even though these arrays are different, they are both converted to empty strings
 [].toString() === [,].toString(); // -> true
 Of course, this is also true:
 
-Number([]) === Number([,]); // -> true
-21. NaN === NaN
+Number([]) === Number([,]); // -> true 21. NaN === NaN
 Output: false
 You answered: true
 You answered incorrectly.
@@ -314,15 +323,13 @@ NaN === NaN; // -> false
 ... these two statements are true.
 
 isNaN(NaN); // -> true
-Object.is(NaN, NaN); // -> true
-22. NaN++
+Object.is(NaN, NaN); // -> true 22. NaN++
 Output: NaN
 You answered: NaN
 You got it right!
 NaN is not a number, so it cannot be incremented. This also means that NaN and NaN++ represent the same value:
 
-Object.is(NaN, NaN++); // -> true
-23. undefined + false
+Object.is(NaN, NaN++); // -> true 23. undefined + false
 Output: NaN
 You answered: "undefinedfalse"
 You answered incorrectly.
@@ -336,15 +343,13 @@ However, undefined is represented by false:
 !!undefined === false; // -> true
 Which means that we can add undefined and false like so:
 
-!!undefined + false; // -> 0
-24. +0 === -0
+!!undefined + false; // -> 0 24. +0 === -0
 Output: true
 You answered: true
 You got it right!
 Positive zero and negative zero are equal in JavaScript. Interestingly, though, the Object.is function disagrees. There are a few scenarios where === and Object.is disagree with one another, and this is one of them.
 
-Object.is(0, -0); // -> false
-25. - "" + + "1" * null - [,]
+Object.is(0, -0); // -> false 25. - "" + + "1" \* null - [,]
 Output: 0
 You answered: 0
 You got it right!
@@ -356,4 +361,4 @@ Number(null); // -> 0
 Number([,]); // -> 0
 Add it all together:
 
--0 + 1 * 0 - 0; // -> 0
+-0 + 1 \* 0 - 0; // -> 0
