@@ -300,6 +300,15 @@ Use custom function for sort. getTime() will convert datetime to a number of mil
 arrays.sort((a, b)
   => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 )[0]
+  
+  
+//2nd method
+  
+arrays.sort(
+function(a,b){
+  return b.datetime.localeCompare(a.datetime)
+})
+
 ```
 
 </details>
