@@ -34,7 +34,7 @@ If you want to make a suggestion or contribute to this, feel free to pull the re
 
 ---
 
-<b>1. Create an array of number from an array of an object and do calulation</b>
+<b>1. Create an array of number from an array of an object and do calculation</b>
 
 input
 
@@ -64,7 +64,7 @@ output
 
 <b>Array.prototype.map</b> will create an array of the value from the selected key in the JSON object.
 
-<b>Array.prototype.reduce</b> will accumulate the number. The firt argument is the accumulator function and second argument is the starting value.
+<b>Array.prototype.reduce</b> will accumulate the number. The first argument is the accumulator function and second argument is the starting value.
 
 <b>Function.prototype.apply</b> takes this value as a first argument and an array as a second argument. It will apply the function to the array. For example, Math.sum.apply(null, [1, 2, 3]) will sum up all the numbers in the array. Math.sum works with Math.sum(1, 2, 3). But, to make it work with an array, we need to use apply function.
 
@@ -213,7 +213,7 @@ input.sort((a, b) => b.name - a.name);
 
 </details>
 
-<b>5. Sorting object array by multipe keys</b>
+<b>5. Sorting object array by multiple keys</b>
 
 We sorted an object array by a key in the previous question. What if the score is tie and want to sort it by the second key, name.
 
