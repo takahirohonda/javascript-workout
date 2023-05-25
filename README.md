@@ -294,16 +294,14 @@ output - return the latest datetime record
 
 <details><summary><b>Answer</b></summary>
 
-Use custom function for sort. getTime() will convert datetime to a number of milliseconds since midnight Jan 1, 1970.
+Use custom function for sort. getTime() will convert datetime to a number of milliseconds since midnight Jan 1, 1970. We can also use `localeCompare()` method which returns a number indicating whether a reference string comes before, or after, or is the same as the given string in sort order.
 
 ```javascript
 arrays.sort((a, b)
   => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 )[0]
-  
-  
-//2nd method
-  
+
+// Using localeCompare()
 arrays.sort(
 function(a,b){
   return b.datetime.localeCompare(a.datetime)
@@ -473,7 +471,7 @@ output
 
 <details><summary><b>Answer</b></summary>
 
-Use map with if condition✌
+Use map with if condition.
 
 ```javascript
 const newFruits = fruits.map((x) => {
@@ -502,7 +500,7 @@ output
 
 <details><summary><b>Answer</b></summary>
 
-We can map array without using .map(). Array.from takes arrayLike object as an first argument and map function applied to every element of the array as a second argument. Third argument is the value to use as this when executing map function. Second and thrid arguments are optional.
+We can map array without using .map(). Array.from takes arrayLike object as an first argument and map function applied to every element of the array as a second argument. Third argument is the value to use as this when executing map function. Second and third arguments are optional.
 
 ```javascript
 Array.from(input, (x) => x % 3);
@@ -528,7 +526,7 @@ output
 
 <details><summary><b>Answer</b></summary>
 
-We can just set the array length to 0. That's it🤯
+We can just set the array length to 0. That's it 🤯
 
 ```javascript
 arr.length = 0;
@@ -548,7 +546,7 @@ output
 
 <details><summary><b>Answer</b></summary>
 
-We can use fill() to fill an empty array with the value.
+We can use `fill()` to fill an empty array with the value.
 
 ```javascript
 new Array(10).fill(1);
@@ -593,7 +591,7 @@ const colors = ["blue", "white", "green", "navy", "pink", "black", "brown"];
 
 <details><summary><b>Answer</b></summary>
 
-Math.ramdom() yeilds a random number between 0 and one. Then, we multiply with length of the array and take the floor to generate random index.
+`Math.random()` gives a random number between 0 and one. Then, we multiply with length of the array and take the floor to generate random index.
 
 ```javascript
 colors[Math.floor(Math.random() * colors.length)];
@@ -720,7 +718,7 @@ output
 
 <details><summary><b>Answer</b></summary>
 
-By using toLocaleString(), we can format currency with one line🤯
+By using toLocaleString(), we can format currency with one line 🤯.
 
 ```javascript
 amount.toLocaleString("en-US", {
@@ -729,7 +727,7 @@ amount.toLocaleString("en-US", {
 });
 ```
 
-There is a great blog post about natvively formatting JavaScript Numbers <a>here</a>. The image below is from that blog post.
+We can natively format JavaScript Numbers.
 
 <img alt="formatting-number-cheatsheet" src="./img/format-js-numbers-crop.png" width="900"/>
 
@@ -802,9 +800,9 @@ The above will give us the output of '29/06/2020, 9:59:01 am'. We need to format
 formatted.toUpperCase().split(", ").join(" ");
 ```
 
-That's it🤙
+That's it 🤙!
 
-If you want to do this without native API, it gets long🐢
+If you want to do this without native API, it gets long 🐢.
 
 ```typescript
 formatUtcToLocal(timestamp: string): string {
@@ -843,7 +841,7 @@ convertHour(hour: number): number {
 
 ---
 
-Spread syntax is cool🥳 Use spread syntax for all the questions. Let's build spread syntax muscle memory! 🐣🐣🐣
+Spread syntax is cool 🥳. Use spread syntax for all the questions. Let's build spread syntax muscle memory 🐣🐣🐣!
 
 <b>1. Spread with arrays</b>
 
@@ -854,21 +852,21 @@ const fruits = ["apple", "banana", "blueberry"];
 const vegs = ["lettus", "tomato"];
 ```
 
-Without spread, we would use concat to combine two arrays. Use spread syntax to concat two arrays.
+Without spread, we would use `.concat()` to combine two arrays. Use spread syntax to `.concat()` two arrays.
 
 output
 
 ```javascript
-["apple", "banana", "blueberry", "lettus", "tomato"];
+["apple", "banana", "blueberry", "lettuce", "tomato"];
 ```
 
 <details><summary><b>Answer</b></summary>
 
 ```javascript
-const combined = [...fruits, ...vegs];
+const combined = [...fruits, ...vegis];
 
 // it is the same as
-const combined = fruits.concat(vegs);
+const combined = fruits.concat(vegis);
 ```
 
 </details>
@@ -981,9 +979,9 @@ const copied = Object.assign({}, original);
 
 </details>
 
-<b>6. Adding a new property on an exisitng object</b>
+<b>6. Adding a new property on an existing object</b>
 
-Add a new property to an exisitng object in an immutable fashion.
+Add a new property to an existing object in an immutable fashion.
 
 input
 
@@ -1003,7 +1001,7 @@ output
 const updatedFruit = { ...fruit, sweet: true };
 ```
 
-We can do the spread if the added proerty is an object as below.
+We can do the spread if the added property is an object as below.
 
 ```javascript
 const add = { sweet: true }
@@ -1014,7 +1012,7 @@ const updatedFruit = { ...fruit, ...add }
 
 </details>
 
-<b>7. Updating a property on an exisitng object</b>
+<b>7. Updating a property on an existing object</b>
 
 Update an existing property to create a new object in an immutable fashion.
 
@@ -1206,7 +1204,7 @@ It's the quick and dirty way to convert an array to an object with spread✌
 
 ---
 
-In JavaScript, three dot syntax is interesting. It can be either spread or rest parameter syntax and they do exactly the opposite🤯 Let's test your knowledge on rest parameter syntax🚀
+In JavaScript, three dot syntax is interesting. It can be either spread or rest parameter syntax and they do exactly the opposite 🤯. Let's test your knowledge on rest parameter syntax 🚀.
 
 <b>1. ...args</b>
 
@@ -1224,7 +1222,7 @@ check(1, 2, 3, 4);
 
 Rest parameter syntax will create an array instead of unpacking an array of object into individual values as in spread syntax.
 
-The output will become an array of numbers🤯
+The output will become an array of numbers 🤯.
 
 ```javascript
 [1, 2, 3, 4];
@@ -1250,7 +1248,7 @@ check(1, 2, 3, 4, 5);
 
 Rest parameter syntax will create an array instead of unpacking an array of object into individual values as in spread syntax.
 
-The output will become an array of numbers🤯
+The output will become an array of numbers 🤯.
 
 ```javascript
 1;
@@ -1272,7 +1270,7 @@ console.log(rest);
 
 <details><summary><b>Answer</b></summary>
 
-Rest parameter can be used when destructing arrays. ...rest will creates the shorter array.
+Rest parameter can be used when destructing arrays. `...rest` will creates the shorter array.
 
 ```javascript
 apple[("banana", "grape")];
@@ -1346,7 +1344,7 @@ const number = 12;
 
 ---
 
-### REFERNCES
+### REFERENCES
 
 ---
 
@@ -1354,7 +1352,7 @@ There is a greate JavaScript questions to get to know the language better. Your 
 
 I subscribe to <a target="_blank" href="https://javascriptweekly.com/">JavaScript Weekly.</a> It's a weekly email informing you on what is happening on JS landscape as well as useful JS tips! Highly recommended.
 
-There are many code challenges websites. My recommendation is <a target="_blank" href="https://edabit.com/challenges">edatbit.com</a>. If you are comforatble with JavaScript, go to the expert level. These intereting bite-size challenges will be a holiday for your mind🌴
+There are many code challenges websites. My recommendation is <a target="_blank" href="https://edabit.com/challenges">edatbit.com</a>. If you are comfortable with JavaScript, go to the expert level. These interesting bite-size challenges will be a holiday for your mind🌴
 
 You can get to build framework and library free JS apps from <a target="_blank" href="https://javascript30.com/">JavaScript30.com</a>. It's free.
 
