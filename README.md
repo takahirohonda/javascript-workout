@@ -929,6 +929,33 @@ output - create a new array called fruitArray
 ["apple", "orange", "banana"];
 ```
 
+<details><summary><b>Answer</b></summary>
+
+Using spread syntax with a set object will create an array.
+
+```js
+[...fruitSet];
+```
+
+Set is a collection of unique values (either primitive or object).
+
+```javascript
+const fruitSet = new Set();
+set.add("apple");
+set.add("apple");
+set.add("banana");
+// Set only contains "apple" and "banana"
+```
+
+We can actually create an array with unique values with Set and spread syntax.
+
+```js
+[...new Set(["apple", "banana", "apple", "banana", "orange"])];
+// results in ['apple', 'banana', 'orange']
+```
+
+</details>
+
 <b>4. Create an array from a string</b>
 
 We can also use spread to create an array from a string.
