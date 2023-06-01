@@ -1350,12 +1350,12 @@ Which one is evaluated as truthy?
 
 Empty array `[]` and empty object `{}` are evaluated as `truthy`.
 
-Any primitive type evaluate to true in JavaScript, with the exception of 1 to 7🤯
+Any primitive type evaluate to true in JavaScript, with the exception of 1 to 7 🤯.
 
 </details>
 <br />
 
-<b>2. What is !!</b>
+<b>2. What is `!!`?</b>
 
 <details><summary><b>Answer</b></summary>
 
@@ -1375,12 +1375,12 @@ const number = 12;
 
 ---
 
-There is a greate JavaScript questions to get to know the language better. Your JavaScript knowledge will skyrocket🚀 Check out <a target="_blank" href="https://github.com/lydiahallie/javascript-questions">javascript-questions</a>
+There is a great JavaScript questions to get to know the language better. Your JavaScript knowledge will skyrocket 🚀. Check out <a target="_blank" href="https://github.com/lydiahallie/javascript-questions">javascript-questions</a>
 
 I subscribe to <a target="_blank" href="https://javascriptweekly.com/">JavaScript Weekly.</a> It's a weekly email informing you on what is happening on JS landscape as well as useful JS tips! Highly recommended.
 
-There are many code challenges websites. My recommendation is <a target="_blank" href="https://edabit.com/challenges">edatbit.com</a>. If you are comfortable with JavaScript, go to the expert level. These interesting bite-size challenges will be a holiday for your mind🌴
+There are many code challenges websites. My recommendation is <a target="_blank" href="https://edabit.com/challenges">edatbit.com</a>. If you are comfortable with JavaScript, go to the expert level. These interesting bite-size challenges will be a holiday for your mind 🌴.
 
 You can get to build framework and library free JS apps from <a target="_blank" href="https://javascript30.com/">JavaScript30.com</a>. It's free.
 
-I am copy and pasting emoji from <a target="_blank" href="https://unicode.org/emoji/charts/full-emoji-list.html">this website</a>🥰
+I am copy and pasting emoji from <a target="_blank" href="https://unicode.org/emoji/charts/full-emoji-list.html">this website</a> 🥰.
