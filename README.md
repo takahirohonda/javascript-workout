@@ -296,7 +296,7 @@ output - return the latest datetime record
 
 Use custom function for sort. getTime() will convert datetime to a number of milliseconds since midnight Jan 1, 1970. We can also use `localeCompare()` method which returns a number indicating whether a reference string comes before, or after, or is the same as the given string in sort order.
 
-```javascript
+```js
 arrays.sort((a, b)
   => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 )[0]
@@ -311,13 +311,42 @@ function(a,b){
 
 </details>
 
-<b>7. Aggregate by year</b>
+<b>7. Update object values</b>
+
+```js
+// input
+const height = {
+  john: 170,
+  allen: 182,
+  jack: 168,
+};
+
+// output
+const output = {
+  john: "170cm",
+  allen: "182cm",
+  jack: "168cm",
+};
+```
+
+<details><summary><b>Answer</b></summary>
+
+Use `Object.entries` to create an array of the key-value pairs.
+`Object.entries(height)` will create `[['john', 170], ...]`.
+
+```js
+const output = Object.entries(height).map((k) => ({ [k[0]]: `${k[1]}cm` }));
+```
+
+</details>
+
+<b>8. Aggregate by year</b>
 
 Aggregate the percentage by key.
 
 input
 
-```javascript
+```js
 const breakdown = [
   {
     percentage: 80,
