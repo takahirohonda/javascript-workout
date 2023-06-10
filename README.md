@@ -335,7 +335,7 @@ Use `Object.entries` to create an array of the key-value pairs.
 `Object.entries(height)` will create `[['john', 170], ...]`.
 
 ```js
-const output = Object.entries(height).map((k) => ({ [k[0]]: `${k[1]}cm` }));
+const output = Object.entries(height).map((v) => ({ [v[0]]: `${v[1]}cm` }));
 ```
 
 </details>
