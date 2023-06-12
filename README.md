@@ -633,7 +633,7 @@ colors[Math.floor(Math.random() * colors.length)];
 Get the last index of 5 occurs in the array below. You need to return 9.
 
 ```javascript
-const nums = [1, 5, 2, 6, 3, 5, 2, 3, 6, 5, 2, 7];
+const numbers = [1, 5, 2, 6, 3, 5, 2, 3, 6, 5, 2, 7];
 ```
 
 <details><summary><b>Answer</b></summary>
@@ -641,7 +641,7 @@ const nums = [1, 5, 2, 6, 3, 5, 2, 3, 6, 5, 2, 7];
 Here is the interesting method that javascript has. lastIndexOf().
 
 ```javascript
-nums.lastIndexOf(5);
+numbers.lastIndexOf(5);
 ```
 
 </details>
@@ -1286,7 +1286,7 @@ The output will become an array of numbers 🤯.
 
 </details>
 
-<b>2. ...args with other argments</b>
+<b>2. ...args with other arguments</b>
 
 What is the output of below?
 
