@@ -4,11 +4,11 @@
 
 <span>This is a collection of short JavaScript programming solutions that you will encounter everyday.
 
-As with any programming language, JavaScript has its own way of solving problems. Knowing how to do basic data type conversion or array manipulations will make you deliver your solutions faster. 😊
+As with any programming language, JavaScript has its own way of solving problems. Knowing how to do basic data type conversion or array manipulations will make you deliver your solutions faster 😊.
 
-I hope this helps you to be a more efficient JavaScript developer🤟💀🤟
+I hope this helps you to be a more efficient JavaScript developer 🤟💀🤟.
 
-Feel free to reach out to me🤙 <br />
+Feel free to reach out to me 🤙! <br />
 
 <a href="https://www.mydatahack.com" target="_blank">Blog</a> || <a href="https://github.com/aws-lambda-template-generator" target="_blank">Open Source Project</a> || <a href="https://thehondas.bandcamp.com/" target="_blank">Band Camp</a>
 
