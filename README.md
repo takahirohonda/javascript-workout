@@ -878,7 +878,7 @@ input
 
 ```javascript
 const fruits = ["apple", "banana", "blueberry"];
-const vegs = ["lettus", "tomato"];
+const vegs = ["lettuce", "tomato"];
 ```
 
 Without spread, we would use `.concat()` to combine two arrays. Use spread syntax to `.concat()` two arrays.
