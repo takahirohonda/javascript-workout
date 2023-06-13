@@ -332,10 +332,10 @@ const output = {
 <details><summary><b>Answer</b></summary>
 
 Use `Object.entries` to create an array of the key-value pairs.
-`Object.entries(height)` will create `[['john', 170], ...]`.
+`Object.entries(height)` will create `[['john', 170], ...]`. Then, we can destructure the nested arrays with `[k, v]` in the `map` method.
 
 ```js
-const output = Object.entries(height).map((v) => ({ [v[0]]: `${v[1]}cm` }));
+const output = Object.entries(height).map(([k, v]) => ({ [k]: `${v}cm` }));
 ```
 
 </details>
